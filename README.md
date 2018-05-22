@@ -4,8 +4,8 @@ Super simple Angular app with 1 module and 2 routes. This is a minor variation o
 
 ## Get the Code
 ```
-git clone https://github.com/johnpapa/angular-tour-of-heroes.git toh
-cd toh
+git clone https://github.com/mikhailmendoza/angular-quickstart.git angular-quickstart
+cd angular-quickstart
 npm i
 ```
 
