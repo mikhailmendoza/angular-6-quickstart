@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { Hero } from './heroes/hero-model/hero';
-import { HeroService } from './heroes/hero-service/hero.service';
+import { Hero } from './hero-model/hero';
+import { HeroService } from './hero-service/hero.service';
 
 @Component({
-  selector: 'my-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'my-heroes',
+  templateUrl: './heroes.component.html',
+  styleUrls: ['./heroes.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class HeroesComponent implements OnInit {
   heroes: Hero[] = [];
 
   constructor(
@@ -26,6 +25,4 @@ export class DashboardComponent implements OnInit {
     const link = ['/detail', hero.id];
     this.router.navigate(link);
   }
-
-
 }

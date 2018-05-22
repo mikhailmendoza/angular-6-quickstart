@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError as observableThrowError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { Hero } from './hero';
+import { Hero } from '../hero-model/hero';
 
 @Injectable()
 export class HeroSearchService {

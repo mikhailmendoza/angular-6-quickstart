@@ -1,0 +1,48 @@
+<!-- <my-country-search  [countryList]='countryList'> </my-country-search> -->
+
+<!-- <input type="text" name="title" [(ngModel)]="filter.title" placeholder="Title"></th> -->
+<div class="row row justify-content-center">
+  <div class="col col-xl-6 col-lg-6" [ngClass]="{'hide-element': mdlSampleIsOpen}">
+    <div class="card mb-3">
+      <div class="card-header">List of Countries and Capitals</div>
+      <div class="card-body table-responsive">
+        <div class="form-group">
+          <label>Search Data</label>
+          <input type="text" class="form-control" id="name" [(ngModel)]="name" name="name" placeholder="Searc" (ngModelChange)="globalSearchFunction($event)">
+        </div>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th (click)='sortCountryByName()'>
+                Country Name
+                <span [ngClass]="{'hide-element': sortByName}">
+                  <i class="fa fa-chevron-up" *ngIf="sortDirectionName === 'asc'"></i>
+                  <i class="fa fa-chevron-down" *ngIf="sortDirectionName === 'desc'"></i>
+                </span>
+              </th>
+              <th (click)='sortCountryByCapital()'>
+                Country Capital
+                <span [ngClass]="{'hide-element': sortByCapital}">
+                  <i class="fa fa-chevron-up" *ngIf="sortDirectionCapital === 'asc'"></i>
+                  <i class="fa fa-chevron-down" *ngIf="sortDirectionCapital === 'desc'"></i>
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let country of countryList">
+              <td>{{country.name}}</td>
+              <td>{{country.capital}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-body">
+        <button class="btn btn-success" (click)="addCountryCapital()" [disabled]="addCountry">Add Data</button>
+      </div>
+    </div>
+  </div>
+  <div [@dialog] id="mdlSampleIsOpen" class="dialog">
+    <my-country-add (addRecord)="addRecord($event)" [countryList]='countryList' (exitModal)="exitModal()" [mdlSampleIsOpen]="mdlSampleIsOpen"></my-country-add>
+  </div>
+</div>

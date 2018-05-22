@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Hero } from './hero';
-import { HeroService } from './hero.service';
+import { Hero } from '../hero-model/hero';
+import { HeroService } from '../hero-service/hero.service';
 
 @Component({
   selector: 'my-hero-detail',
@@ -10,7 +10,8 @@ import { HeroService } from './hero.service';
 })
 export class HeroDetailComponent implements OnInit {
   @Input() hero: Hero;
-  @Output() close = new EventEmitter();
+  @Output() saveRecord = new EventEmitter();
+    @Output() close = new EventEmitter();
   error: any;
   navigated = false; // true if navigated here
 
@@ -35,6 +36,7 @@ export class HeroDetailComponent implements OnInit {
   save(): void {
     this.heroService.save(this.hero).subscribe(hero => {
       this.hero = hero; // saved hero, w/ id if new
+      this.saveRecord.emit(this.hero);
       this.goBack(hero);
     }, error => (this.error = error)); // TODO: Display error message
   }

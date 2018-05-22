@@ -1,0 +1,20 @@
+.table-bordered,
+th,
+td {
+  border: 1px solid #ddd !important;
+}
+
+.table-bordered{
+  width: 100%
+}
+
+.searchBtn{
+  position: relative;
+  left: 31vw;
+}
+
+.hide-element{
+  visibility: hidden;
+}
+
+
