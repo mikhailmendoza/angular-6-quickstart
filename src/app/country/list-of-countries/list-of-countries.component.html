@@ -8,23 +8,42 @@
       <div class="card-body table-responsive">
         <div class="form-group">
           <label>Search Data</label>
-          <input type="text" class="form-control" id="name" [(ngModel)]="name" name="name" placeholder="Searc" (ngModelChange)="globalSearchFunction($event)">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                <input type="text" class="form-control" id="name" [(ngModel)]="name" name="name" placeholder="Search" (ngModelChange)="globalSearchFunction()">
+
+              </div>
+              <div class="col-sm">
+                <select class="form-control styled-select" [(ngModel)]="filterBy" (change) = "filterMode()" >
+                  <option value="" selected disabled hidden>Search By</option>
+                  <option value="country">Country</option>
+                  <option value="capital">Capital</option>
+                </select>
+
+              </div>
+
+            </div>
+          </div>
+
+          <span>
+          </span>
         </div>
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th (click)='sortCountryByName()'>
-                Country Name
+              <th (click)='sortCountryByName($event)'>
+                <span> Country Name </span>
                 <span [ngClass]="{'hide-element': sortByName}">
-                  <i class="fa fa-chevron-up" *ngIf="sortDirectionName === 'asc'"></i>
-                  <i class="fa fa-chevron-down" *ngIf="sortDirectionName === 'desc'"></i>
+                  <i class="fa" [ngClass]="{'fa-chevron-up': sortDirectionName === 'asc',
+                    'fa-chevron-down': sortDirectionName === 'desc'}" aria-hidden="true"> </i>
                 </span>
               </th>
               <th (click)='sortCountryByCapital()'>
-                Country Capital
+                <span> Country Capital </span>
                 <span [ngClass]="{'hide-element': sortByCapital}">
-                  <i class="fa fa-chevron-up" *ngIf="sortDirectionCapital === 'asc'"></i>
-                  <i class="fa fa-chevron-down" *ngIf="sortDirectionCapital === 'desc'"></i>
+                  <i class="fa" [ngClass]="{'fa-chevron-up': sortDirectionCapital === 'asc',
+                    'fa-chevron-down': sortDirectionCapital === 'desc'}" aria-hidden="true"> </i>
                 </span>
               </th>
             </tr>

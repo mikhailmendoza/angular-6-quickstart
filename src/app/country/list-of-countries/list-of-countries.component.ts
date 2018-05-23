@@ -6,6 +6,8 @@ import { CountryModel } from '../country-model/country';
 import { CountryService } from '../country-service/country.service';
 import { filter } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { SharedUtils } from '../../shared/utils';
+
 import {
   animate,
   keyframes,
@@ -31,14 +33,13 @@ import {
       ])
     ])
   ]
-
 })
+
 export class ListOfCountriesComponent implements OnInit, OnChanges {
   countryList: CountryModel[] = [];
   tempCountryList: CountryModel[] = [];
   error: any;
   addCountry = false;
-  searchCountry = false;
   countryModel: CountryModel = new CountryModel;
   mdlSampleIsOpen = false;
   columnName: string;
@@ -46,16 +47,13 @@ export class ListOfCountriesComponent implements OnInit, OnChanges {
   sortDirectionCapital: string = 'asc';
   sortByName = false;
   sortByCapital = true;
+  filterBy: string = 'country';
+  name: string;
+ 
 
-
-  constructor(private countryService: CountryService) {
-
-  }
-
-
+  constructor(private countryService: CountryService , private  sharedUtils : SharedUtils) {}
 
   ngOnChanges(changes: SimpleChanges) {
-
     if (!_.isEmpty(changes.countryList.currentValue)) {
       this.countryList = changes.countryList.currentValue;
     } else {
@@ -76,20 +74,15 @@ export class ListOfCountriesComponent implements OnInit, OnChanges {
   }
 
   getCountryList(): void {
-    this.countryService
-      .getCountries()
-      .subscribe(
-        countryList => (this.countryList = countryList),
-        error => (this.error = error)
-      )
+    this.countryService.getCountries().subscribe(
+      countryList => (this.countryList = countryList),
+      error => (this.error = error)
+    )
   }
 
   addRecord(value) {
-    let element = document.querySelectorAll('input');
     this.countryList.push(value);
-    this.addCountry = false;
-    this.searchCountry = false;
-    this.mdlSampleIsOpen = false;
+    this.exitModal();
   }
 
   addCountryCapital() {
@@ -97,41 +90,52 @@ export class ListOfCountriesComponent implements OnInit, OnChanges {
     this.addCountry = (this.addCountry) ? false : true;
   }
 
-  searchCountryList() {
-    this.searchCountry = (this.searchCountry) ? false : true;
-  }
-
   exitModal() {
     this.mdlSampleIsOpen = false;
     this.addCountry = false;
   }
 
-
-  globalSearchFunction(value){
+  globalSearchFunction() {
     let filterObj: any;
-    if (value && value !== '') {
-      filterObj = this.tempCountryList.filter(country => country.name.toUpperCase()=== value.toUpperCase());
-      if(_.isEmpty(filterObj)){
-        filterObj = this.tempCountryList.filter(country => country.capital.toUpperCase()=== value.toUpperCase());
+    this.countryList = [];
+    if (!this.sharedUtils.isStringNullOrEmpty(this.name)) {
+      if (this.filterBy === 'country') {
+       filterObj = this.searchByCountry();
       }
-      if(_.isEmpty(filterObj)){
-        filterObj = this.tempCountryList.filter(country => _.includes(country.name.toUpperCase(), value.toUpperCase()));
+      else {
+        filterObj = this.searchByCapital();
       }
-      if(_.isEmpty(filterObj)){
-        filterObj = this.tempCountryList.filter(country => _.includes(country.capital.toUpperCase(), value.toUpperCase()));
-        }
-      this.countryList = [];
       this.countryList = filterObj;
     } else {
       this.countryList = this.tempCountryList;
     }
   }
 
-  sortCountryByName() {
+  filterMode(){
+    this.globalSearchFunction();
+  }
+
+  searchByCountry() : any{
+   let filterObj = this.tempCountryList.filter(country => country.name.toUpperCase() === this.name.toUpperCase());
+    if (_.isEmpty(filterObj)) {
+      filterObj = this.tempCountryList.filter(country => _.includes(country.name.toUpperCase(), this.name.toUpperCase()));
+    }
+    return filterObj;
+  }
+
+  searchByCapital(): any{
+    let filterObj = this.tempCountryList.filter(country => country.capital.toUpperCase() === this.name.toUpperCase());
+    if (_.isEmpty(filterObj)) {
+      filterObj = this.tempCountryList.filter(country => _.includes(country.capital.toUpperCase(), this.name.toUpperCase()));
+    }
+    return filterObj;
+  }
+
+  sortCountryByName(event) {
+    event.stopPropagation();
     this.columnHeaderSortIconLogic('name', this.sortDirectionName);
     this.sortLogic(this.sortDirectionName, 'name');
     this.sortDirectionName = (this.sortDirectionName === 'asc') ? 'desc' : 'asc';
-
   }
 
   sortCountryByCapital() {

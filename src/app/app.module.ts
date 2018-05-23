@@ -16,6 +16,7 @@ import { ListOfCountriesComponent } from './country/list-of-countries/list-of-co
 import { CountryService } from './country/country-service/country.service';
 import { HeroListComponent } from './heroes/hero-list/hero-list.component';
 import { CountryAddComponent } from './country/country-add/country-add.component';
+import { SharedUtils } from './shared/utils';
 
 
 
@@ -30,7 +31,8 @@ import { CountryAddComponent } from './country/country-add/country-add.component
       dataEncapsulation: false,
       delay: 300,
       passThruUnknownUrl: true
-    }),
+    })
+    
   ],
   declarations: [
     AppComponent,
@@ -40,10 +42,10 @@ import { CountryAddComponent } from './country/country-add/country-add.component
     HeroDetailComponent,
     ListOfCountriesComponent,
     HeroListComponent,
-    CountryAddComponent
+    CountryAddComponent,
   ],
 
-  providers: [HeroService, CountryService],
+  providers: [HeroService, CountryService, SharedUtils],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
