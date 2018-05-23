@@ -10,15 +10,16 @@ import { HeroService } from '../hero-service/hero.service';
 })
 export class HeroDetailComponent implements OnInit {
   @Input() hero: Hero;
+  @Input() addingHero: boolean;
   @Output() saveRecord = new EventEmitter();
-    @Output() close = new EventEmitter();
+  @Output() close = new EventEmitter();
   error: any;
   navigated = false; // true if navigated here
 
   constructor(
     private heroService: HeroService,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {
@@ -38,6 +39,7 @@ export class HeroDetailComponent implements OnInit {
       this.hero = hero; // saved hero, w/ id if new
       this.saveRecord.emit(this.hero);
       this.goBack(hero);
+      this.hero = new Hero();
     }, error => (this.error = error)); // TODO: Display error message
   }
 
@@ -45,6 +47,7 @@ export class HeroDetailComponent implements OnInit {
     this.close.emit(savedHero);
     if (this.navigated) {
       window.history.back();
+    
     }
   }
 }

@@ -8,34 +8,45 @@
 </div> -->
 
 <div *ngIf="!isDataloading">
-<ul class="heroes">
-  <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
-    <span class="hero-element">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </span>
-    <button class="delete-button" (click)="deleteHero(hero, $event)">Delete</button>
-  </li>
-</ul>
-<div *ngIf="addingHero">
-  <div class="error" *ngIf="error">{{error}}</div>
-  <my-hero-detail (saveRecord)="saveRecord($event)" (close)="close($event)"></my-hero-detail>
-</div>
-<button [ngClass]= "{'hidden':addingHero}"  (click)="addHero()">Add New Hero</button>
-<div [ngClass]="{'hidden':!addingHero}">
-  <h4>ngFor Features</h4>
-  <button (click)="showNgFor=!showNgFor">{{showNgFor ? 'Hide' : 'Show'}} ngFor Features</button>
-  <table [class.hidden]="!showNgFor">
-    <tbody>
-      <tr *ngFor="let hero of heroes; let ix = index; let c = count; let e = even; let o = odd; let f = first; let l = last">
-        <td>{{hero.name}}</td>
-        <td>{{ix}}</td>
-        <td>{{c}}</td>
-        <td>{{e}}</td>
-        <td>{{o}}</td>
-        <td>{{f}}</td>
-        <td>{{l}}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <div class="row row justify-content-left" colspan="6">
+    <div class="col col-md-3 col-md-3 margin-all">
+      <div class="card mb-3">
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
+            <span class="hero-element">
+              <span class="badge">{{hero.id}}</span> {{hero.name}}
+            </span>
+            <button class="delete-button" (click)="deleteHero(hero, $event)">Delete</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col col-md-3 col-md-3" colspan="6">
+      <div class="card mb-3 margin-all">
+        <div class="error" *ngIf="error">{{error}}</div>
+        <my-hero-detail [addingHero]="addingHero" (saveRecord)="saveRecord($event)" (close)="close($event)"></my-hero-detail>
+      </div>
+    </div>
+    <div class="col col-md-3 col-md-3 margin-all" colspan="6">
+      <h4>ngFor Features</h4>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>
+              <span>INDEX </span>
+            </th>
+            <th>
+              <span>HERO </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let hero of heroes; let ix = index;">
+            <td>{{ix +1}}</td>
+            <td>{{hero.name}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

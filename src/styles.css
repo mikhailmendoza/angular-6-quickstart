@@ -1,7 +1,77 @@
 /* You can add global styles to this file, and also import other style files */
 
-h2 { color: #444; font-weight: lighter; }
-body { margin: 2em; }
-body, input[text], button { color: #888; font-family: Cambria, Georgia; }
-button { padding: 0.2em; font-size: 14px}
-* { font-family: Arial; }
+h2 {
+  color: #444;
+  font-weight: lighter;
+}
+
+body {
+  margin: 2em;
+}
+
+body,
+input[text],
+button {
+  color: #888;
+  font-family: Cambria, Georgia;
+}
+
+button {
+  padding: 0.2em;
+  font-size: 14px
+}
+
+* {
+  font-family: Arial;
+}
+
+.hidden {
+  visibility: hidden
+}
+
+.margin-all {
+  margin: 15px 15px 15px 15px
+}
+
+.padding-all {
+  padding: 15px 15px 15px 15px
+}
+
+.margin-vertical {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.margin-horizontal {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.padding-vertical {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.margin-right {
+  margin-right: 15px;
+}
+
+.margin-left {
+  margin-left: 15px;
+}
+
+.margin-top {
+  margin-top: 15px;
+}
+
+.margin-buttom {
+  margin-bottom: 15px;
+}
+
+.list-group-item {
+  width: 100%;
+}
+
+.border-bottom {
+  border-bottom: 1px solid rgba(0, 0, 0, .125);
+}
