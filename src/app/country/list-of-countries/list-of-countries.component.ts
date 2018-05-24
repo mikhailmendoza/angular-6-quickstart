@@ -49,13 +49,15 @@ export class ListOfCountriesComponent implements OnInit, OnChanges {
   sortByCapital = true;
   filterBy: string = 'country';
   name: string;
- 
 
-  constructor(private countryService: CountryService , private  sharedUtils : SharedUtils) {}
+
+  constructor(private countryService: CountryService, private sharedUtils: SharedUtils) { }
 
   ngOnChanges(changes: SimpleChanges) {
+    console.log(this.countryList);
     if (!_.isEmpty(changes.countryList.currentValue)) {
       this.countryList = changes.countryList.currentValue;
+
     } else {
       this.initializeData();
     }
@@ -81,7 +83,9 @@ export class ListOfCountriesComponent implements OnInit, OnChanges {
   }
 
   addRecord(value) {
-    this.countryList.push(value);
+    if (!_.some(this.countryList, { value })) {
+      this.countryList.push(value);
+    }
     this.exitModal();
   }
 
@@ -100,7 +104,7 @@ export class ListOfCountriesComponent implements OnInit, OnChanges {
     this.countryList = [];
     if (!this.sharedUtils.isStringNullOrEmpty(this.name)) {
       if (this.filterBy === 'country') {
-       filterObj = this.searchByCountry();
+        filterObj = this.searchByCountry();
       }
       else {
         filterObj = this.searchByCapital();
@@ -111,19 +115,19 @@ export class ListOfCountriesComponent implements OnInit, OnChanges {
     }
   }
 
-  filterMode(){
+  filterMode() {
     this.globalSearchFunction();
   }
 
-  searchByCountry() : any{
-   let filterObj = this.tempCountryList.filter(country => country.name.toUpperCase() === this.name.toUpperCase());
+  searchByCountry(): any {
+    let filterObj = this.tempCountryList.filter(country => country.name.toUpperCase() === this.name.toUpperCase());
     if (_.isEmpty(filterObj)) {
       filterObj = this.tempCountryList.filter(country => _.includes(country.name.toUpperCase(), this.name.toUpperCase()));
     }
     return filterObj;
   }
 
-  searchByCapital(): any{
+  searchByCapital(): any {
     let filterObj = this.tempCountryList.filter(country => country.capital.toUpperCase() === this.name.toUpperCase());
     if (_.isEmpty(filterObj)) {
       filterObj = this.tempCountryList.filter(country => _.includes(country.capital.toUpperCase(), this.name.toUpperCase()));

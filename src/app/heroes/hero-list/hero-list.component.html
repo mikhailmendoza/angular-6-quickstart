@@ -10,7 +10,7 @@
 <div *ngIf="!isDataloading">
   <div class="row row justify-content-left" colspan="6">
     <div class="col col-md-3 col-md-3 margin-all">
-      <div class="card mb-3">
+      <div class="card mb-3 card mb-3 scroll-body">
         <ul class="list-group">
           <li class="list-group-item" *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
             <span class="hero-element">

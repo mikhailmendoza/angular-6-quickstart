@@ -1,0 +1,17 @@
+<div class="form-group">
+  <label>Search Data</label>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <input type="text" class="form-control" id="search" [(ngModel)]="search" name="search" placeholder="Search" (ngModelChange)="globalSearchFunction()">
+      </div>
+      <div class="col-sm">
+        <select class="form-control styled-select" [(ngModel)]="filterBy" (change)="filterMode()">
+          <option value="" selected disabled hidden>Search By</option>
+          <option value="country">Country</option>
+          <option value="capital">Capital</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>

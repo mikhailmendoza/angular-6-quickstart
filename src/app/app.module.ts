@@ -17,6 +17,7 @@ import { CountryService } from './country/country-service/country.service';
 import { HeroListComponent } from './heroes/hero-list/hero-list.component';
 import { CountryAddComponent } from './country/country-add/country-add.component';
 import { SharedUtils } from './shared/utils';
+import { CountrySearchComponent } from './country/country-search/country-search.component';
 
 
 
@@ -43,6 +44,7 @@ import { SharedUtils } from './shared/utils';
     ListOfCountriesComponent,
     HeroListComponent,
     CountryAddComponent,
+    CountrySearchComponent,
   ],
 
   providers: [HeroService, CountryService, SharedUtils],
