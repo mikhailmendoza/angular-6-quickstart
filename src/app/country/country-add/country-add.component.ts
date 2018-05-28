@@ -13,7 +13,7 @@ import * as _ from "lodash";
   styleUrls: ['./country-add.component.css'],
 
 })
-export class CountryAddComponent {
+export class CountryAddComponent implements OnChanges {
   @Input() mdlAddRecord: boolean;
   @Output() addRecord: EventEmitter<any> = new EventEmitter();
   @Output() exitModal: EventEmitter<any> = new EventEmitter();
@@ -23,17 +23,22 @@ export class CountryAddComponent {
 
   constructor(private sharedUtils: SharedUtils) { }
 
+  ngOnChanges(simpleChanges: SimpleChanges) {
+    this.countryName = '';
+    this.capital = '';
+  }
+  
   ngOnInit() { }
 
   addData() {
     let addCountry = { name: this.countryName, capital: this.capital };
     this.addRecord.emit(addCountry)
-    this.clearFields();
   }
 
   closeModal() {
     this.mdlAddRecord = false;
     this.exitModal.emit("add");
+    this.clearFields();
   }
 
   validateInput() {

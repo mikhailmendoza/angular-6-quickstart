@@ -18,11 +18,16 @@
       </div>
     </div>
     <div id="mdlAddRecord" class="dialog">
-      <my-country-add (addRecord)="addRecord($event)" (exitModal)="exitModal()" [mdlAddRecord]="mdlAddRecord"></my-country-add>
+      <my-country-add (addRecord)="addRecord($event)" (exitModal)="exitModal($event)" [mdlAddRecord]="mdlAddRecord"></my-country-add>
     </div>
     <div id="mdlEditRecord" class="dialog">
-      <my-country-edit (editRecord)="editRecord($event)" [selectedData]="selectedData" (exitModal)="exitModal()" [mdlEditRecord]="mdlEditRecord"></my-country-edit>
+      <my-country-edit (editRecord)="editRecord($event)" [selectedData]="selectedData" (exitModal)="exitModal($event)" [mdlEditRecord]="mdlEditRecord"></my-country-edit>
     </div>
+    <div *ngIf="showModal" class="dialog">
+      <my-shared-modal [modalTitle]="modalTitle" [modalBody]="modalBody" [mode]="mode" [showModal]="showModal" (proceedTransaction)="proceedTransaction($event)"
+        (exitSharedModal)="exitSharedModal($event)"></my-shared-modal>
+    </div>
+
     <my-shared-spinner *ngIf="showSpinner" [showSpinner]="showSpinner"></my-shared-spinner>
   </div>
 </div>

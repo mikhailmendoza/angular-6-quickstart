@@ -36,6 +36,11 @@ export class CountryMainComponent implements OnInit {
   editCountry = true;
   deleteCountry = true;
   mdlEditRecord = false;
+  modalTitle: string;
+  modalBody: string;
+  mode: string;
+  showModal = false;
+  newObj: any;
 
   constructor(private countryService: CountryService, private sharedUtils: SharedUtils) { }
 
@@ -61,30 +66,37 @@ export class CountryMainComponent implements OnInit {
   }
 
   addRecord(value) {
-    this.enableSpinner()
-    if (!_.find(this.countryList, { name: value.name })) {
-      this.countryList.push(value);
-    }
-    this.tempCountryList = this.countryList;
-    this.exitModal("add");
-    this.hideSpinner();
+    this.newObj = value;
+    this.mode = 'add';
+    this.confirmModal();
   }
 
   editRecord(value) {
-    this.enableSpinner()
-    let updateObj = _.find(this.countryList, this.selectedData)
-    if (updateObj) {
-      updateObj.name = value.name;
-      updateObj.capital = value.capital;
-    }
-    this.exitModal("edit");
-    this.hideSpinner();
+    this.newObj = value;
+    this.mode = 'edit';
+    this.confirmModal();
   }
 
-  deleteRecord(value) {
-    this.enableSpinner()
-    this.countryList = _.reject(this.countryList, this.selectedData);
-    this.hideSpinner();
+  deleteRecord() {
+    this.mode = 'delete';
+    this.confirmModal();
+  }
+
+  saveRecord() {
+    if (!_.find(this.countryList, { name: this.newObj.name })) {
+      this.countryList.push(this.newObj);
+    }
+    this.tempCountryList = this.countryList;
+    this.exitModal("add");
+  }
+
+  updateRecord() {
+    let updateObj = _.find(this.countryList, this.selectedData)
+    if (updateObj) {
+      updateObj.name = this.newObj.name;
+      updateObj.capital = this.newObj.capital;
+    }
+    this.exitModal("edit");
   }
 
   addCountryCapital() {
@@ -94,6 +106,55 @@ export class CountryMainComponent implements OnInit {
 
   editCountryCapital() {
     this.mdlEditRecord = true;
+  }
+
+  proceedTransaction() {
+    this.enableSpinner()
+    switch (this.mode) {
+      case "delete":
+        this.deleteRecordFromArray();
+        break;
+      case "add":
+        this.saveRecord();
+        break;
+      case "edit":
+        this.updateRecord();
+        break;
+
+      default:
+        break;
+    }
+    this.hideSpinner();
+    this.exitSharedModal();
+  }
+
+  exitSharedModal() {
+    this.showModal = false;
+    // this.exitModal(this.mode);
+  }
+
+  deleteRecordFromArray() {
+    this.countryList = _.reject(this.countryList, this.selectedData);
+  }
+
+  confirmModal() {
+    this.showModal = true;
+    switch (this.mode) {
+      case 'add':
+        this.modalTitle = 'Add Record';
+        this.modalBody = 'Are you sure you want to Add a record?';
+        break;
+      case 'edit':
+        this.modalTitle = 'Edit Record';
+        this.modalBody = 'Are you sure you want to Update the Record?';
+        break;
+      case 'delete':
+        this.modalTitle = 'Delete Record';
+        this.modalBody = 'Are you sure you want to Delete the Record?';
+        break;
+      default:
+        break;
+    }
   }
 
   exitModal(mode) {

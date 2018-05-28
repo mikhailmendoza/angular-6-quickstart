@@ -22,6 +22,7 @@ import { UtilitesComponent } from './shared/utilites/utilites.component';
 import { CountryMainComponent } from './country/country-main/country-main.component';
 import { SharedSpinnerComponent } from './shared/shared-spinner/shared-spinner.component';
 import { CountryEditComponent } from './country/country-edit/country-edit.component';
+import { SharedModalComponent } from './country/shared/shared-modal/shared-modal.component';
 
 
 
@@ -53,6 +54,7 @@ import { CountryEditComponent } from './country/country-edit/country-edit.compon
     CountryMainComponent,
     SharedSpinnerComponent,
     CountryEditComponent,
+    SharedModalComponent,
   ],
 
   providers: [HeroService, CountryService, SharedUtils],
