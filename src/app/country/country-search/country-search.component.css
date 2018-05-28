@@ -1,0 +1,9 @@
+.col-sm {
+  padding-left: 0 !important;
+}
+
+.styled-select {
+  width: 25% !important;
+  height: 34px !important;
+  padding: 0 0;
+}

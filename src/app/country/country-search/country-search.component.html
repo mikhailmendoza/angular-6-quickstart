@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-sm">
-        <input type="text" class="form-control" id="search" [(ngModel)]="search" name="search" placeholder="Search" (ngModelChange)="globalSearchFunction()">
+        <input type="text" class="form-control" id="search" [(ngModel)]="search" name="search" placeholder="Search" (ngModelChange)="filterMode()">
       </div>
       <div class="col-sm">
         <select class="form-control styled-select" [(ngModel)]="filterBy" (change)="filterMode()">

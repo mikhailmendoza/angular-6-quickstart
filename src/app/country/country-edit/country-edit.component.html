@@ -1,0 +1,27 @@
+<div id="mdlSample" class="modal fade fade-scale dialog" role="dialog" [ngStyle]="{'display': mdlEditRecord ? 'block' : 'none', 'opacity': 1}">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit of Country and Capital</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="countryName">Country Name </label>
+            <input type="text" class="form-control" id="countryName" [(ngModel)]="countryName" name="countryName" placeholder="ANY COUNTRY" (ngModelChange)="validateInput()">
+          </div>
+  
+          <div class="form-group">
+            <label for="capital">Country Capital </label>
+            <input type="text" class="form-control" id="capital" [(ngModel)]="capital" name="capital" placeholder="ANY CAPITAL" (ngModelChange)="validateInput()">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-success" align ='left' (click)="editData()" [disabled] = "disableSave">Save Data</button>
+           
+          <button type="button" id="btnClose" align ='right' class="btn btn-danger" (click)="closeModal()">Close</button>
+            <!-- <i class="fa fa-times fa-fw"></i> Cancel</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  

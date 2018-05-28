@@ -1,6 +1,7 @@
 export class SharedUtils {
+    
     isStringNullOrEmpty(value): boolean {
-        let returnFlag = (value && value === '') ? true : false;
+        let returnFlag = (value) ? false : true;
         return returnFlag
     }
 }

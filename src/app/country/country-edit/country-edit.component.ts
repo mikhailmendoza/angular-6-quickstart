@@ -6,34 +6,40 @@ import {
 import { SharedUtils } from '../../shared/utils';
 import * as _ from "lodash";
 
-
 @Component({
-  selector: 'my-country-add',
-  templateUrl: './country-add.component.html',
-  styleUrls: ['./country-add.component.css'],
-
+  selector: 'my-country-edit',
+  templateUrl: './country-edit.component.html',
+  styleUrls: ['./country-edit.component.css']
 })
-export class CountryAddComponent {
-  @Input() mdlAddRecord: boolean;
-  @Output() addRecord: EventEmitter<any> = new EventEmitter();
+export class CountryEditComponent implements OnChanges {
+
+  @Input() mdlEditRecord: boolean;
+  @Input() selectedData: any;
+  @Output() editRecord: EventEmitter<any> = new EventEmitter();
   @Output() exitModal: EventEmitter<any> = new EventEmitter();
+  disableSave: boolean = true;
   countryName: string;
   capital: string;
-  disableSave: boolean = true;
 
   constructor(private sharedUtils: SharedUtils) { }
 
-  ngOnInit() { }
 
-  addData() {
-    let addCountry = { name: this.countryName, capital: this.capital };
-    this.addRecord.emit(addCountry)
+  ngOnChanges(simpleChanges: SimpleChanges) {
+    if (this.selectedData) {
+      this.countryName = this.selectedData.name;
+      this.capital = this.selectedData.capital;
+    }
+  }
+
+  editData() {
+    let editCountry = { name: this.countryName, capital: this.capital };
+    this.editRecord.emit(editCountry);
     this.clearFields();
   }
 
   closeModal() {
-    this.mdlAddRecord = false;
-    this.exitModal.emit("add");
+    this.mdlEditRecord = false;
+    this.exitModal.emit("edit");
   }
 
   validateInput() {
@@ -49,5 +55,8 @@ export class CountryAddComponent {
     this.capital = '';
     this.disableSave = true;
   }
+
 }
+
+
 

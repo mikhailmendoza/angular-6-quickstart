@@ -1,0 +1,25 @@
+<div class="row row justify-content-center">
+  <div class="col col-xl-6 col-lg-6" [ngClass]="{'hide-element': mdlSampleIsOpen}">
+    <div *ngIf="!showSpinner" class="card mb-3">
+      <div class="card-header">{{title}}</div>
+      <div class="card-body border-bottom">
+        <my-country-search [countryList]="countryList" [tempCountryList]="tempCountryList" (searchResult)="searchResult($event)"></my-country-search>
+        <my-list-of-countries [countryList]="countryList" [tempCountryList]="tempCountryList" (selectRecord)="selectRecord($event)"></my-list-of-countries>
+      </div>
+      <div class="margin-all">
+        <button class="btn btn-success" (click)="addCountryCapital()" [disabled]="addCountry">Add Data</button>
+
+        <button class="btn btn-success margin-vertical" (click)="editCountryCapital()" [disabled]="editCountry">Edit Data</button>
+
+        <button class="btn btn-danger " (click)="deleteRecord()" [disabled]="deleteCountry">Delete Data</button>
+      </div>
+    </div>
+  </div>
+  <div id="mdlAddRecord" class="dialog">
+    <my-country-add (addRecord)="addRecord($event)" (exitModal)="exitModal()" [mdlAddRecord]="mdlAddRecord"></my-country-add>
+  </div>
+  <div id="mdlEditRecord" class="dialog">
+    <my-country-edit (editRecord)="editRecord($event)" [selectedData]= "selectedData" (exitModal)="exitModal()" [mdlEditRecord]="mdlEditRecord"></my-country-edit>
+  </div>
+</div>
+<my-shared-spinner *ngIf="showSpinner" [showSpinner]="showSpinner"></my-shared-spinner>

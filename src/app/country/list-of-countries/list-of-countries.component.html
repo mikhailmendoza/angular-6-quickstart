@@ -1,67 +1,28 @@
-<!-- <my-country-search  [countryList]='countryList'> </my-country-search> -->
-
-<!-- <input type="text" name="title" [(ngModel)]="filter.title" placeholder="Title"></th> -->
-<div class="row row justify-content-center">
-  <div class="col col-xl-6 col-lg-6" [ngClass]="{'hide-element': mdlSampleIsOpen}">
-    <div class="card mb-3">
-      <div class="card-header">List of Countries and Capitals</div>
-      <div class="card-body border-bottom">
-        <div class="form-group">
-          <label>Search Data</label>
-          <div class="container">
-            <div class="row">
-              <div class="col-sm">
-                <input type="text" class="form-control" id="name" [(ngModel)]="name" name="name" placeholder="Search" (ngModelChange)="globalSearchFunction()">
-
-              </div>
-              <div class="col-sm">
-                <select class="form-control styled-select" [(ngModel)]="filterBy" (change) = "filterMode()" >
-                  <option value="" selected disabled hidden>Search By</option>
-                  <option value="country">Country</option>
-                  <option value="capital">Capital</option>
-                </select>
-
-              </div>
-
-            </div>
-          </div>
-
-          <span>
-          </span>
-        </div>
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th (click)='sortCountryByName($event)'>
-                <span> Country Name </span>
-                <span [ngClass]="{'hide-element': sortByName}">
-                  <i class="fa" [ngClass]="{'fa-chevron-up': sortDirectionName === 'asc',
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th> Select Record </th>
+      <th (click)='sortCountryByName($event)'>
+        <span> Country Name </span>
+        <span [ngClass]="{'hide-element': sortByName}">
+          <i class="fa" [ngClass]="{'fa-chevron-up': sortDirectionName === 'asc',
                     'fa-chevron-down': sortDirectionName === 'desc'}" aria-hidden="true"> </i>
-                </span>
-              </th>
-              <th (click)='sortCountryByCapital()'>
-                <span> Country Capital </span>
-                <span [ngClass]="{'hide-element': sortByCapital}">
-                  <i class="fa" [ngClass]="{'fa-chevron-up': sortDirectionCapital === 'asc',
+        </span>
+      </th>
+      <th (click)='sortCountryByCapital()'>
+        <span> Country Capital </span>
+        <span [ngClass]="{'hide-element': sortByCapital}">
+          <i class="fa" [ngClass]="{'fa-chevron-up': sortDirectionCapital === 'asc',
                     'fa-chevron-down': sortDirectionCapital === 'desc'}" aria-hidden="true"> </i>
-                </span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let country of countryList">
-              <td>{{country.name}}</td>
-              <td>{{country.capital}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="margin-all">
-        <button class="btn btn-success" (click)="addCountryCapital()" [disabled]="addCountry">Add Data</button>
-      </div>
-    </div>
-  </div>
-  <div [@dialog] id="mdlSampleIsOpen" class="dialog">
-    <my-country-add (addRecord)="addRecord($event)" [countryList]='countryList' (exitModal)="exitModal()" [mdlSampleIsOpen]="mdlSampleIsOpen"></my-country-add>
-  </div>
-</div>
+        </span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let country of countryList">
+      <td><input type="checkbox"  (change)="selectData(country)"/></td>
+      <td>{{country.name}} </td>
+      <td>{{country.capital}}</td>
+    </tr>
+  </tbody>
+</table>

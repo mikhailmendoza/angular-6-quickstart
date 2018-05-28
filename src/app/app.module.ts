@@ -18,6 +18,10 @@ import { HeroListComponent } from './heroes/hero-list/hero-list.component';
 import { CountryAddComponent } from './country/country-add/country-add.component';
 import { SharedUtils } from './shared/utils';
 import { CountrySearchComponent } from './country/country-search/country-search.component';
+import { UtilitesComponent } from './shared/utilites/utilites.component';
+import { CountryMainComponent } from './country/country-main/country-main.component';
+import { SharedSpinnerComponent } from './shared/shared-spinner/shared-spinner.component';
+import { CountryEditComponent } from './country/country-edit/country-edit.component';
 
 
 
@@ -45,6 +49,10 @@ import { CountrySearchComponent } from './country/country-search/country-search.
     HeroListComponent,
     CountryAddComponent,
     CountrySearchComponent,
+    UtilitesComponent,
+    CountryMainComponent,
+    SharedSpinnerComponent,
+    CountryEditComponent,
   ],
 
   providers: [HeroService, CountryService, SharedUtils],

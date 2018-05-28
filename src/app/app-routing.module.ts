@@ -6,6 +6,7 @@ import { HeroDetailComponent } from './heroes/hero-detail/hero-detail.component'
 import { HeroesComponent } from './heroes/heroes.component';
 import { ListOfCountriesComponent } from './country/list-of-countries/list-of-countries.component';
 import { HeroListComponent } from './heroes/hero-list/hero-list.component';
+import {CountryMainComponent} from './country/country-main/country-main.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'detail/:id', component: HeroDetailComponent },
   { path: 'heroes', component: HeroListComponent },
-  { path: 'country', component: ListOfCountriesComponent }
+  { path: 'country', component: CountryMainComponent }
 ];
 
 @NgModule({
