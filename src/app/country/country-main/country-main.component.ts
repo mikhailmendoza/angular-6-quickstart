@@ -62,7 +62,7 @@ export class CountryMainComponent implements OnInit {
 
   addRecord(value) {
     this.enableSpinner()
-    if (!_.some(this.countryList, { value }) || !_.some(this.tempCountryList, { value })) {
+    if (!_.find(this.countryList, { name: value.name })) {
       this.countryList.push(value);
     }
     this.tempCountryList = this.countryList;

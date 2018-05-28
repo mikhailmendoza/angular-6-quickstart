@@ -1,28 +1,32 @@
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th> Select Record </th>
-      <th (click)='sortCountryByName($event)'>
-        <span> Country Name </span>
-        <span [ngClass]="{'hide-element': sortByName}">
-          <i class="fa" [ngClass]="{'fa-chevron-up': sortDirectionName === 'asc',
-                    'fa-chevron-down': sortDirectionName === 'desc'}" aria-hidden="true"> </i>
-        </span>
-      </th>
-      <th (click)='sortCountryByCapital()'>
-        <span> Country Capital </span>
-        <span [ngClass]="{'hide-element': sortByCapital}">
-          <i class="fa" [ngClass]="{'fa-chevron-up': sortDirectionCapital === 'asc',
-                    'fa-chevron-down': sortDirectionCapital === 'desc'}" aria-hidden="true"> </i>
-        </span>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let country of countryList">
-      <td><input type="checkbox"  (change)="selectData(country)"/></td>
-      <td>{{country.name}} </td>
-      <td>{{country.capital}}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="table-responsive ">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th (click)='sortCountryByName($event)'>
+          <span> Country Name </span>
+          <span [ngClass]="{'hide-element': sortByName}">
+            <i class="fa" [ngClass]="{'fa-chevron-up': sortDirectionName === 'asc','fa-chevron-down': sortDirectionName === 'desc'}"
+              aria-hidden="true"> </i>
+          </span>
+        </th>
+        <th (click)='sortCountryByCapital()'>
+          <span> Country Capital </span>
+          <span [ngClass]="{'hide-element': sortByCapital}">
+            <i class="fa" [ngClass]="{'fa-chevron-up': sortDirectionCapital === 'asc','fa-chevron-down': sortDirectionCapital === 'desc'}"
+              aria-hidden="true"> </i>
+          </span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let country of countryList">
+        <td>
+          <input type="checkbox" (change)="selectData(country)" />
+        </td>
+        <td>{{country.name}}</td>
+        <td>{{country.capital}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

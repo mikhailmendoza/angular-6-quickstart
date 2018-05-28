@@ -23,14 +23,9 @@ export class CountrySearchComponent implements OnInit, OnChanges {
   ngOnInit() {
   }
 
-  globalSearchFunction():any {
+  globalSearchFunction(): any {
     if (!this.sharedUtils.isStringNullOrEmpty(this.search)) {
-      if (this.filterBy === 'country') {
-        this.filterObj = this.searchByCountry();
-      }
-      else {
-        this.filterObj = this.searchByCapital();
-      }
+      this.filterObj = this.searchData();
     } else {
       this.filterObj = this.tempCountryList;
     }
@@ -38,23 +33,20 @@ export class CountrySearchComponent implements OnInit, OnChanges {
   }
 
   filterMode() {
-    this.filterObj=this.globalSearchFunction();
+    this.filterObj = this.globalSearchFunction();
     this.searchResult.emit(this.filterObj)
   }
 
-  searchByCountry(): any {
-    this.filterObj = this.tempCountryList.filter(country => country.name.toUpperCase() === this.search.toUpperCase());
-    if (_.isEmpty(this.filterObj)) {
-      this.filterObj = this.tempCountryList.filter(country => _.includes(country.name.toUpperCase(), this.search.toUpperCase()));
+  searchData(): any {
+    let objCountry = this.tempCountryList.filter(country => country.name.toUpperCase() === this.search.toUpperCase());
+    let objCapital = this.tempCountryList.filter(country => country.capital.toUpperCase() === this.search.toUpperCase());
+    if (_.isEmpty(objCountry)) {
+      objCountry = this.tempCountryList.filter(country => _.includes(country.name.toUpperCase(), this.search.toUpperCase()));
     }
-    return this.filterObj;
-  }
-
-  searchByCapital(): any {
-    this.filterObj = this.tempCountryList.filter(country => country.capital.toUpperCase() === this.search.toUpperCase());
-    if (_.isEmpty(this.filterObj)) {
-      this.filterObj = this.tempCountryList.filter(country => _.includes(country.capital.toUpperCase(), this.search.toUpperCase()));
+    if (_.isEmpty(objCapital)) {
+      objCapital = this.tempCountryList.filter(country => _.includes(country.capital.toUpperCase(), this.search.toUpperCase()));
     }
+    this.filterObj = _.union(objCapital, objCountry)
     return this.filterObj;
   }
 

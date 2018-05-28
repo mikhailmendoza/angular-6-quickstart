@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+/* @import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"); */
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css");
 
 h2 {
   color: #444;
@@ -51,6 +53,7 @@ button {
   padding-left: 15px;
   padding-right: 15px;
 }
+
 
 .margin-right {
   margin-right: 15px;

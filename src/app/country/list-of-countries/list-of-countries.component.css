@@ -4,30 +4,25 @@ td {
   border: 1px solid #ddd !important;
 }
 
-.table-bordered{
+.table-bordered {
   width: 100%
 }
 
-.searchBtn{
+.searchBtn {
   position: relative;
   left: 31vw;
 }
 
-.hide-element{
+.hide-element {
   visibility: hidden;
 }
 
-.col-sm{
+.col-sm {
   padding-left: 0 !important;
 }
 
-.styled-select{
+.styled-select {
   width: 25% !important;
   height: 34px !important;
   padding: 0 0;
 }
-
-
-
-
-
