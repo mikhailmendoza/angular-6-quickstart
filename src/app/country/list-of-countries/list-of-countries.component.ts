@@ -57,8 +57,8 @@ export class ListOfCountriesComponent implements  OnChanges {
     }
   }
  
-  selectData(value){
-    this.selectRecord.emit(value);
+  selectData(countryModel:CountryModel){
+    this.selectRecord.emit(countryModel);
 
   }
 }

@@ -54,7 +54,7 @@ import { SharedModalComponent } from './country/shared/shared-modal/shared-modal
     CountryMainComponent,
     SharedSpinnerComponent,
     CountryEditComponent,
-    SharedModalComponent,
+    SharedModalComponent
   ],
 
   providers: [HeroService, CountryService, SharedUtils],

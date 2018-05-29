@@ -8,17 +8,6 @@ import { filter } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { SharedUtils } from '../../shared/utils';
 
-import {
-  animate,
-  keyframes,
-  query,
-  stagger,
-  style,
-  transition,
-  trigger
-} from '@angular/animations';
-import { FindValueSubscriber } from 'rxjs/internal/operators/find';
-
 @Component({
   selector: 'my-country-main',
   templateUrl: './country-main.component.html',
@@ -32,7 +21,7 @@ export class CountryMainComponent implements OnInit {
   mdlAddRecord = false;
   showSpinner = true;
   title = "Country & Capital List";
-  selectedData: any;
+  selectedData: CountryModel;
   editCountry = true;
   deleteCountry = true;
   mdlEditRecord = false;
@@ -41,7 +30,7 @@ export class CountryMainComponent implements OnInit {
   mode: string;
   showModal = false;
   newObj: any;
-
+  error: any;
   constructor(private countryService: CountryService, private sharedUtils: SharedUtils) { }
 
   ngOnInit() {
@@ -133,28 +122,42 @@ export class CountryMainComponent implements OnInit {
     // this.exitModal(this.mode);
   }
 
+  // deleteHero(hero: Hero, event: any): void {
+  //   event.stopPropagation();
+  //   this.heroService.delete(hero).subscribe(res => {
+  //     this.heroes = this.heroes.filter(h => h !== hero);
+  //     if (this.selectedHero === hero) {
+  //       this.selectedHero = null;
+  //     }
+  //   }, error => (this.error = error));
+  // }
+
   deleteRecordFromArray() {
-    this.countryList = _.reject(this.countryList, this.selectedData);
+    this.enableSpinner()
+    this.countryService.deleteCountries(this.countryList,this.selectedData).subscribe(res => {
+      this.countryList = res;
+    },error =>(this.error= error));
+    this.hideSpinner()
   }
 
   confirmModal() {
-    this.showModal = true;
-    switch (this.mode) {
+        this.showModal = true;
+        switch(this.mode) {
       case 'add':
         this.modalTitle = 'Add Record';
         this.modalBody = 'Are you sure you want to Add a record?';
         break;
-      case 'edit':
+        case 'edit':
         this.modalTitle = 'Edit Record';
         this.modalBody = 'Are you sure you want to Update the Record?';
         break;
-      case 'delete':
+        case 'delete':
         this.modalTitle = 'Delete Record';
         this.modalBody = 'Are you sure you want to Delete the Record?';
         break;
-      default:
+        default:
         break;
-    }
+      }
   }
 
   exitModal(mode) {
@@ -178,8 +181,8 @@ export class CountryMainComponent implements OnInit {
     }
   }
 
-  selectRecord(value) {
-    this.selectedData = value;
+  selectRecord(countryModel:CountryModel) {
+    this.selectedData = countryModel;
     let flag = (this.selectedData) ? false : true;
     this.enableDisableEditDeleteBtn(flag)
   }

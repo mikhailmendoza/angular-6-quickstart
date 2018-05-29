@@ -34,7 +34,6 @@ export class CountryEditComponent implements OnChanges {
   editData() {
     let editCountry = { name: this.countryName, capital: this.capital };
     this.editRecord.emit(editCountry);
-    this.clearFields();
   }
 
   closeModal() {
@@ -49,13 +48,6 @@ export class CountryEditComponent implements OnChanges {
       this.disableSave = true;
     }
   }
-
-  clearFields() {
-    this.countryName = '';
-    this.capital = '';
-    this.disableSave = true;
-  }
-
 }
 
 

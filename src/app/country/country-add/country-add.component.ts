@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, } from '@angular/core';
 import {
   ReactiveFormsModule,
   FormsModule,
@@ -6,12 +6,10 @@ import {
 import { SharedUtils } from '../../shared/utils';
 import * as _ from "lodash";
 
-
 @Component({
   selector: 'my-country-add',
   templateUrl: './country-add.component.html',
   styleUrls: ['./country-add.component.css'],
-
 })
 export class CountryAddComponent implements OnChanges {
   @Input() mdlAddRecord: boolean;

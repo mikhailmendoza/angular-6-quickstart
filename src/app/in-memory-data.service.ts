@@ -1,6 +1,6 @@
 export class InMemoryDataService {
   createDb() {
-    const heroes = [
+    let heroes = [
       { id: 11, name: 'Mr. Nice' },
       { id: 12, name: 'Narco' },
       { id: 13, name: 'Bombasto' },
@@ -12,6 +12,14 @@ export class InMemoryDataService {
       { id: 19, name: 'Magma' },
       { id: 20, name: 'Tornado' }
     ];
-    return { heroes };
-  }
+
+    let countries = [
+      { name: 'Japan', capital: 'Tokyo' },
+      { name: 'Philippines', capital: '1' },
+      { name: 'South Korea', capital: 'Seoul' },
+      { name: 'France', capital: 'Paris' },
+      { name: 'Italy', capital: 'Rome' }
+    ]
+    return { heroes, countries };
+  };
 }
