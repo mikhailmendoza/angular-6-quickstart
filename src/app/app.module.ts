@@ -23,9 +23,6 @@ import { CountryMainComponent } from './country/country-main/country-main.compon
 import { SharedSpinnerComponent } from './shared/shared-spinner/shared-spinner.component';
 import { CountryEditComponent } from './country/country-edit/country-edit.component';
 import { SharedModalComponent } from './country/shared/shared-modal/shared-modal.component';
-import { SpacingResponsiveComponent } from './spacing-responsive/spacing-responsive.component';
-import { WidthsResponsiveComponent } from './widths-responsive/widths-responsive.component';
-import { LayoutResponsiveComponent } from './layout-responsive/layout-responsive.component';
 
 
 
@@ -57,11 +54,8 @@ import { LayoutResponsiveComponent } from './layout-responsive/layout-responsive
     CountryMainComponent,
     SharedSpinnerComponent,
     CountryEditComponent,
-    SharedModalComponent,
-    SpacingResponsiveComponent,
-    WidthsResponsiveComponent,
-    LayoutResponsiveComponent
-  ],
+    SharedModalComponent
+   ],
 
   providers: [HeroService, CountryService, SharedUtils],
   bootstrap: [AppComponent]

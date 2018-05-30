@@ -11,7 +11,11 @@ import { SharedUtils } from '../../shared/utils';
 @Component({
   selector: 'my-country-main',
   templateUrl: './country-main.component.html',
-  styleUrls: ['./country-main.component.css']
+  styleUrls: ['./country-main.component.css',
+    '../../shared/styles/layout-responsive.component.css',
+    '../../shared/styles/spacing-responsive.component.css',
+    '../../shared/styles/width-responsive.component.css',
+    '../../shared/styles/font-design.component.css']
 })
 export class CountryMainComponent implements OnInit {
   countryList: CountryModel[];
@@ -31,6 +35,7 @@ export class CountryMainComponent implements OnInit {
   showModal = false;
   newObj: any;
   error: any;
+  isDataLoading = true;
   constructor(private countryService: CountryService, private sharedUtils: SharedUtils) { }
 
   ngOnInit() {
@@ -45,7 +50,6 @@ export class CountryMainComponent implements OnInit {
     } else {
       this.tempCountryList = this.countryList;
     }
-
   }
 
   getCountryList(): void {
@@ -192,6 +196,7 @@ export class CountryMainComponent implements OnInit {
     this.enableDisableEditDeleteBtn(flag)
   }
 
+
   enableDisableEditDeleteBtn(flag) {
     this.editCountry = flag;
     this.deleteCountry = flag;
@@ -199,11 +204,13 @@ export class CountryMainComponent implements OnInit {
 
   enableSpinner() {
     this.showSpinner = true;
+    this.isDataLoading = true;
   }
 
   hideSpinner() {
     setTimeout(() => {
       this.showSpinner = false;
+      this.isDataLoading = false;
     }, 1000);
   }
 

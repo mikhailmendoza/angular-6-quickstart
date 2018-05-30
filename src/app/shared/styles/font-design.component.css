@@ -1,0 +1,83 @@
+.alpha {
+  font-size: 5rem;
+  line-height: 1.06667;
+  font-weight: 400
+}
+
+.beta {
+  font-size: 4rem;
+  line-height: 1;
+  font-weight: 400
+}
+
+.delta,
+.gamma {
+  line-height: 1.33333;
+  font-weight: 400
+}
+
+.gamma {
+  font-size: 3rem
+}
+
+.delta {
+  font-size: 2rem
+}
+
+.epsilon {
+  font-size: 1.33333rem;
+  line-height: 1;
+  font-weight: 400
+}
+
+.zeta {
+  font-size: .8rem;
+  line-height: 1.66667;
+  font-weight: 400
+}
+
+.heading--page {
+  font-size: 2rem;
+  line-height: 1.33333;
+  color: #2c404c;
+}
+
+.heading--section {
+  font-size: 1.33333rem;
+  line-height: 1;
+  color: #677e8c;
+}
+
+.heading--subsection {
+  font-size: 1rem;
+  line-height: 1.33333;
+  color: #2c404c;
+  background-color: rgba(136, 154, 165, .15);
+  display: flex;
+  padding-left: 5px;
+  padding-right: 5px
+}
+
+.label {
+  font-size: .8rem;
+  line-height: 1.66667;
+  color: #677e8c;
+}
+
+.value {
+  font-size: 1rem;
+  line-height: 1.33333;
+  color: #2c404c;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.text-align-right {
+  text-align: right;
+}

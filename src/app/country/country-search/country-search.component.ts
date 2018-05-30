@@ -6,8 +6,13 @@ import * as _ from "lodash";
 @Component({
   selector: 'my-country-search',
   templateUrl: './country-search.component.html',
-  styleUrls: ['./country-search.component.css']
+  styleUrls: ['./country-search.component.css',
+    '../../shared/styles/layout-responsive.component.css',
+    '../../shared/styles/spacing-responsive.component.css',
+    '../../shared/styles/width-responsive.component.css',
+    '../../shared/styles/font-design.component.css']
 })
+
 export class CountrySearchComponent implements OnInit, OnChanges {
   @Input() countryList: CountryModel[];
   @Input() tempCountryList: any;

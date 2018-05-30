@@ -1,60 +1,65 @@
-<div class="row">
-  <div class="col-2"></div>
-  <div class="col-8">
-    <div [ngClass]="{'hide-element': mdlSampleIsOpen}">
-      <div *ngIf="!showSpinner">
-        <div class="text-center">
-          <h2>{{title}}</h2>
-        </div>
-        <div data-spy="scroll" data-target=".table" data-offset="50" class="u-lap-and-up-mh border padding-all scroll-body">
-          <my-country-search class="u-lap-and-up-mh" [countryList]="countryList" [tempCountryList]="tempCountryList" (searchResult)="searchResult($event)"></my-country-search>
-          <my-list-of-countries [countryList]="countryList" [tempCountryList]="tempCountryList" (selectRecord)="selectRecord($event)"></my-list-of-countries>
-          <div class="u-lap-and-up-mb">
-            <button class="btn btn-success" (click)="addCountryCapital()" [disabled]="addCountry">Add Data</button>
-            <button class="btn btn-success u-lap-and-up-mv" (click)="editCountryCapital()" [disabled]="editCountry">Edit Data</button>
-            <button class="btn btn-danger " (click)="deleteRecord()" [disabled]="deleteCountry">Delete Data</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="mdlAddRecord" class="dialog">
-      <my-country-add (addRecord)="addRecord($event)" (exitModal)="exitModal($event)" [mdlAddRecord]="mdlAddRecord"></my-country-add>
-    </div>
-    <div id="mdlEditRecord" class="dialog">
-      <my-country-edit (editRecord)="editRecord($event)" [selectedData]="selectedData" (exitModal)="exitModal($event)" [mdlEditRecord]="mdlEditRecord"></my-country-edit>
-    </div>
-    <div *ngIf="showModal" class="dialog">
-      <my-shared-modal [modalTitle]="modalTitle" [modalBody]="modalBody" [mode]="mode" [showModal]="showModal" (proceedTransaction)="proceedTransaction($event)"
-        (exitSharedModal)="exitSharedModal($event)"></my-shared-modal>
-    </div>
+<div *ngIf="!isDataLoading" class="flex flex--wrap">
 
-    <my-shared-spinner *ngIf="showSpinner" [showSpinner]="showSpinner"></my-shared-spinner>
+  <!-- 25% on a large screen, 50% on a smaller screen, and 100% on mobile -->
+  <div class="u-1/1-desk u-1/1-lap u-1/1-palm">
+  
   </div>
-</div>
-<div class="col-2"></div>
+  <div class="u-1/1-desk u-1/1-lap u-1/1-palm">
 
-
-
-<!-- <div class="row row justify-content-center">
-  <div class="col col-xl-6 col-lg-6" [ngClass]="{'hide-element': mdlSampleIsOpen}">
-    <div *ngIf="!showSpinner" class="card mb-3">
-      <div class="card-header">{{title}}</div>
-      <div class="card-body border-bottom">
-        <my-country-search [countryList]="countryList" [tempCountryList]="tempCountryList" (searchResult)="searchResult($event)"></my-country-search>
-        <my-list-of-countries [countryList]="countryList" [tempCountryList]="tempCountryList" (selectRecord)="selectRecord($event)"></my-list-of-countries>
+          <div class="u-1/1-desk u-1/1-lap u-1/1-palm text-align-center">
+          <span class="epsilon value">{{title}}</span>
+        </div>
+        <div class="u-1/4-desk u-1/4-lap u-1/4-palm"></div>
+        <my-country-search class="" [countryList]="countryList" [tempCountryList]="tempCountryList" (searchResult)="searchResult($event)"></my-country-search>
+    <my-list-of-countries [countryList]="countryList" [tempCountryList]="tempCountryList" (selectRecord)="selectRecord($event)"></my-list-of-countries>
+  </div>
+  <div class="u-1/1-desk u-1/1-lap u-1/1-palm">
+    <div class="flex flex--wrap">
+      <div class="u-1/3-desk u-1/3-lap u-1/3-palm text-align-right">
+        <button class="btn btn-success u-lap-and-up-mh" (click)="addCountryCapital()" [disabled]="addCountry">Add Data</button>
       </div>
-      <div class="card-footer">
-        <button class="btn btn-success" (click)="addCountryCapital()" [disabled]="addCountry">Add Data</button>
-        <button class="btn btn-success u-lap-and-up-mv" (click)="editCountryCapital()" [disabled]="editCountry">Edit Data</button>
-        <button class="btn btn-danger " (click)="deleteRecord()" [disabled]="deleteCountry">Delete Data</button>
+      <div class="u-1/3-desk u-1/3-lap u-1/3-palm text-align-center">
+        <button class="btn btn-success u-lap-and-up-mh" (click)="editCountryCapital()" [disabled]="editCountry">Edit Data</button>
+      </div>
+      <div class="u-1/3-desk u-1/3-lap u-1/3-palm">
+        <button class="btn btn-danger u-lap-and-up-mh" (click)="deleteRecord()" [disabled]="deleteCountry">Delete Data</button>
       </div>
     </div>
   </div>
   <div id="mdlAddRecord" class="dialog">
-    <my-country-add (addRecord)="addRecord($event)" (exitModal)="exitModal()" [mdlAddRecord]="mdlAddRecord"></my-country-add>
+    <my-country-add (addRecord)="addRecord($event)" (exitModal)="exitModal($event)" [mdlAddRecord]="mdlAddRecord"></my-country-add>
   </div>
   <div id="mdlEditRecord" class="dialog">
-    <my-country-edit (editRecord)="editRecord($event)" [selectedData]="selectedData" (exitModal)="exitModal()" [mdlEditRecord]="mdlEditRecord"></my-country-edit>
+    <my-country-edit (editRecord)="editRecord($event)" [selectedData]="selectedData" (exitModal)="exitModal($event)" [mdlEditRecord]="mdlEditRecord"></my-country-edit>
   </div>
+  <div *ngIf="showModal" class="dialog">
+    <my-shared-modal [modalTitle]="modalTitle" [modalBody]="modalBody" [mode]="mode" [showModal]="showModal" (proceedTransaction)="proceedTransaction($event)"
+      (exitSharedModal)="exitSharedModal($event)">
+    </my-shared-modal>
+  </div>
+  
 </div>
-<my-shared-spinner *ngIf="showSpinner" [showSpinner]="showSpinner"></my-shared-spinner> -->
+
+<my-shared-spinner *ngIf="showSpinner" [showSpinner]="showSpinner"></my-shared-spinner>
+
+<div  class="flex flex--wrap">
+    <div class="u-1/1-desk u-1/1-lap u-1/1-palm" style="background-color:  #f8f9fa!important;">
+  tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+    </div>
+
+</div>
+
+<!-- <div *ngIf="!isDataLoading">
+  <div class="layout">
+    <div class="layout__item u-1/1">
+      <my-country-search [countryList]="countryList" [tempCountryList]="tempCountryList" (searchResult)="searchResult($event)"></my-country-search>
+      <my-list-of-countries [countryList]="countryList" [tempCountryList]="tempCountryList" (selectRecord)="selectRecord($event)"></my-list-of-countries>
+      <div class="layout__item--center">
+        <button class="btn btn-success u-lap-and-up-mh" (click)="addCountryCapital()" [disabled]="addCountry">Add Data</button>
+        <button class="btn btn-success u-lap-and-up-mh" (click)="editCountryCapital()" [disabled]="editCountry">Edit Data</button>
+        <button class="btn btn-danger u-lap-and-up-mh" (click)="deleteRecord()" [disabled]="deleteCountry">Delete Data</button>
+      </div>
+
+    </div>
+  </div>
+</div> -->

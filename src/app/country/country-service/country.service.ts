@@ -29,6 +29,7 @@ export class CountryService {
 
   deleteCountries(listOfCountries, recordToDelete): Observable<CountryModel[]> {
     listOfCountries = _.reject(listOfCountries, recordToDelete);
+
     return of(listOfCountries);
   }
 

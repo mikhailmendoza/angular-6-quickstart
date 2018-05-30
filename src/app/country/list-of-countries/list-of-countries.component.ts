@@ -7,7 +7,11 @@ import * as _ from "lodash";
 @Component({
   selector: 'my-list-of-countries',
   templateUrl: './list-of-countries.component.html',
-  styleUrls: ['./list-of-countries.component.css'],
+  styleUrls: ['./list-of-countries.component.css',
+  '../../shared/styles/layout-responsive.component.css',
+  '../../shared/styles/spacing-responsive.component.css',
+  '../../shared/styles/width-responsive.component.css',
+  '../../shared/styles/font-design.component.css'],
 })
 
 export class ListOfCountriesComponent implements  OnChanges {
