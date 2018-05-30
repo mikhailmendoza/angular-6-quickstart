@@ -32,4 +32,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0
 
+## FOR LAYOUT REFER TO 
+(https://www.predix-ui.com)
+Width Responsive
+Spacing Responsive
+Layout 
+Flex box
+
 

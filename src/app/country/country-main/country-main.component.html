@@ -6,12 +6,12 @@
         <div class="text-center">
           <h2>{{title}}</h2>
         </div>
-        <div data-spy="scroll" data-target=".table" data-offset="50" class="margin-horizontal border padding-all scroll-body">
-          <my-country-search class="margin-horizontal" [countryList]="countryList" [tempCountryList]="tempCountryList" (searchResult)="searchResult($event)"></my-country-search>
+        <div data-spy="scroll" data-target=".table" data-offset="50" class="u-lap-and-up-mh border padding-all scroll-body">
+          <my-country-search class="u-lap-and-up-mh" [countryList]="countryList" [tempCountryList]="tempCountryList" (searchResult)="searchResult($event)"></my-country-search>
           <my-list-of-countries [countryList]="countryList" [tempCountryList]="tempCountryList" (selectRecord)="selectRecord($event)"></my-list-of-countries>
-          <div class="margin-buttom">
+          <div class="u-lap-and-up-mb">
             <button class="btn btn-success" (click)="addCountryCapital()" [disabled]="addCountry">Add Data</button>
-            <button class="btn btn-success margin-vertical" (click)="editCountryCapital()" [disabled]="editCountry">Edit Data</button>
+            <button class="btn btn-success u-lap-and-up-mv" (click)="editCountryCapital()" [disabled]="editCountry">Edit Data</button>
             <button class="btn btn-danger " (click)="deleteRecord()" [disabled]="deleteCountry">Delete Data</button>
           </div>
         </div>
@@ -45,7 +45,7 @@
       </div>
       <div class="card-footer">
         <button class="btn btn-success" (click)="addCountryCapital()" [disabled]="addCountry">Add Data</button>
-        <button class="btn btn-success margin-vertical" (click)="editCountryCapital()" [disabled]="editCountry">Edit Data</button>
+        <button class="btn btn-success u-lap-and-up-mv" (click)="editCountryCapital()" [disabled]="editCountry">Edit Data</button>
         <button class="btn btn-danger " (click)="deleteRecord()" [disabled]="deleteCountry">Delete Data</button>
       </div>
     </div>

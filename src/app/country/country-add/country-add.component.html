@@ -18,7 +18,7 @@
       <div class="modal-footer">
         <button class="btn btn-success" align ='left' (click)="addData()" [disabled] = "disableSave">Save Data</button>
          
-        <button type="button" id="btnClose" align ='right' class="btn btn-danger" (click)="closeModal()">Close</button>
+        <button type="button" id="btnClose" align ='right' class="btn btn-danger" [disabled]="disableClose" (click)="closeModal()">Close</button>
           <!-- <i class="fa fa-times fa-fw"></i> Cancel</button> -->
       </div>
     </div>

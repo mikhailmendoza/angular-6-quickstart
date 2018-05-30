@@ -20,25 +20,31 @@ export class CountryService {
       .pipe(map(data => data), catchError(this.handleError));
   }
 
+  saveCountries(countryList, addedValue): Observable<CountryModel[]> {
+    if (!_.find(countryList, { name: addedValue.name })) {
+      countryList.push(addedValue);
+    }
+    return of(countryList);
+  }
+
   deleteCountries(listOfCountries, recordToDelete): Observable<CountryModel[]> {
     listOfCountries = _.reject(listOfCountries, recordToDelete);
     return of(listOfCountries);
   }
 
-  // deleteCountries(recordToDelete) {
-  //   const headers = new Headers();
-  //   headers.append('Content-Type', 'application/json');
-  //   const url = `${this.countryUrl}/${recordToDelete.name}`;
-  //   return this.http.delete<CountryModel>(url).pipe(catchError(this.handleError));
-  // }
-
+  updateCountries(countryList, originalValue, newValue): Observable<CountryModel[]> {
+    let updateObj = _.find(countryList, originalValue)
+    if (updateObj) {
+      updateObj.name = newValue.name;
+      updateObj.capital = newValue.capital;
+    }
+    return of(countryList);
+  }
 
   private handleError(res: HttpErrorResponse | any) {
     console.error(res.error || res.body.error);
     return observableThrowError(res.error || 'Server error');
   }
-
-
 }
 export class CountrySearchCritera {
   sortColumn: string;

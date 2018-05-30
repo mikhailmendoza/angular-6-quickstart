@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { CountryModel } from '../country-model/country';
 import { SharedUtils } from '../../shared/utils';
 import * as _ from "lodash";
@@ -17,8 +17,8 @@ export class CountrySearchComponent implements OnInit, OnChanges {
   filterObj: any;
   constructor(private sharedUtils: SharedUtils) { }
 
-  ngOnChanges() {
-
+  ngOnChanges(simpleChanges: SimpleChanges) {
+    console.log(simpleChanges);
   }
   ngOnInit() {
   }
@@ -38,13 +38,13 @@ export class CountrySearchComponent implements OnInit, OnChanges {
   }
 
   searchData(): any {
-    let objCountry = this.tempCountryList.filter(country => country.name.toUpperCase() === this.search.toUpperCase());
-    let objCapital = this.tempCountryList.filter(country => country.capital.toUpperCase() === this.search.toUpperCase());
+    let objCountry = this.countryList.filter(country => country.name.toUpperCase() === this.search.toUpperCase());
+    let objCapital = this.countryList.filter(country => country.capital.toUpperCase() === this.search.toUpperCase());
     if (_.isEmpty(objCountry)) {
-      objCountry = this.tempCountryList.filter(country => _.includes(country.name.toUpperCase(), this.search.toUpperCase()));
+      objCountry = this.countryList.filter(country => _.includes(country.name.toUpperCase(), this.search.toUpperCase()));
     }
     if (_.isEmpty(objCapital)) {
-      objCapital = this.tempCountryList.filter(country => _.includes(country.capital.toUpperCase(), this.search.toUpperCase()));
+      objCapital = this.countryList.filter(country => _.includes(country.capital.toUpperCase(), this.search.toUpperCase()));
     }
     this.filterObj = _.union(objCapital, objCountry)
     return this.filterObj;

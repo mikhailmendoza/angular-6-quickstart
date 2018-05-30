@@ -42,16 +42,20 @@ export class CountryMainComponent implements OnInit {
   initializeData(): void {
     if (_.isEmpty(this.countryList)) {
       this.getCountryList();
+    } else {
+      this.tempCountryList = this.countryList;
     }
-    this.tempCountryList = this.countryList;
+
   }
 
   getCountryList(): void {
     this.enableSpinner()
     this.countryService.getCountries().subscribe((res: CountryModel[]) => {
       this.countryList = res;
+      this.tempCountryList = res;
       this.hideSpinner();
     });
+
   }
 
   addRecord(value) {
@@ -72,19 +76,19 @@ export class CountryMainComponent implements OnInit {
   }
 
   saveRecord() {
-    if (!_.find(this.countryList, { name: this.newObj.name })) {
-      this.countryList.push(this.newObj);
-    }
+    this.countryService.saveCountries(this.countryList, this.newObj).subscribe((res: CountryModel[]) => {
+      this.countryList = res;
+    });
     this.tempCountryList = this.countryList;
-    this.exitModal("add");
   }
 
-  updateRecord() {
-    let updateObj = _.find(this.countryList, this.selectedData)
-    if (updateObj) {
-      updateObj.name = this.newObj.name;
-      updateObj.capital = this.newObj.capital;
-    }
+  updateCountry() {
+    this.enableSpinner()
+    this.countryService.updateCountries(this.countryList, this.selectedData, this.newObj).subscribe(res => {
+      this.countryList = res;
+    }, error => (this.error = error));
+    this.tempCountryList = this.countryList;
+    this.hideSpinner();
     this.exitModal("edit");
   }
 
@@ -101,13 +105,13 @@ export class CountryMainComponent implements OnInit {
     this.enableSpinner()
     switch (this.mode) {
       case "delete":
-        this.deleteRecordFromArray();
+        this.deleteCountries();
         break;
       case "add":
         this.saveRecord();
         break;
       case "edit":
-        this.updateRecord();
+        this.updateCountry();
         break;
 
       default:
@@ -132,32 +136,33 @@ export class CountryMainComponent implements OnInit {
   //   }, error => (this.error = error));
   // }
 
-  deleteRecordFromArray() {
+  deleteCountries() {
     this.enableSpinner()
-    this.countryService.deleteCountries(this.countryList,this.selectedData).subscribe(res => {
+    this.countryService.deleteCountries(this.countryList, this.selectedData).subscribe(res => {
       this.countryList = res;
-    },error =>(this.error= error));
+    }, error => (this.error = error));
+    this.tempCountryList = this.countryList;
     this.hideSpinner()
   }
 
   confirmModal() {
-        this.showModal = true;
-        switch(this.mode) {
+    this.showModal = true;
+    switch (this.mode) {
       case 'add':
         this.modalTitle = 'Add Record';
         this.modalBody = 'Are you sure you want to Add a record?';
         break;
-        case 'edit':
+      case 'edit':
         this.modalTitle = 'Edit Record';
         this.modalBody = 'Are you sure you want to Update the Record?';
         break;
-        case 'delete':
+      case 'delete':
         this.modalTitle = 'Delete Record';
         this.modalBody = 'Are you sure you want to Delete the Record?';
         break;
-        default:
+      default:
         break;
-      }
+    }
   }
 
   exitModal(mode) {
@@ -181,7 +186,7 @@ export class CountryMainComponent implements OnInit {
     }
   }
 
-  selectRecord(countryModel:CountryModel) {
+  selectRecord(countryModel: CountryModel) {
     this.selectedData = countryModel;
     let flag = (this.selectedData) ? false : true;
     this.enableDisableEditDeleteBtn(flag)

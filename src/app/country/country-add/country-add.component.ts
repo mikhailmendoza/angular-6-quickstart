@@ -18,6 +18,7 @@ export class CountryAddComponent implements OnChanges {
   countryName: string;
   capital: string;
   disableSave: boolean = true;
+  disableClose: boolean = false;
 
   constructor(private sharedUtils: SharedUtils) { }
 
@@ -31,6 +32,8 @@ export class CountryAddComponent implements OnChanges {
   addData() {
     let addCountry = { name: this.countryName, capital: this.capital };
     this.addRecord.emit(addCountry)
+    this.disableBtns();
+    this.closeModal();
   }
 
   closeModal() {
@@ -51,6 +54,11 @@ export class CountryAddComponent implements OnChanges {
     this.countryName = '';
     this.capital = '';
     this.disableSave = true;
+  }
+
+  disableBtns(){
+    this.disableSave = true;
+    this.disableClose = true;
   }
 }
 
