@@ -1,47 +1,30 @@
-<!-- <div class="row row justify-content-center">
-  <div class="col col-xl-6 col-lg-6">
-    <div class="card mb-3">
-      <div class="card-header">Add of Country and Capital</div>
-      <div class="card-body table-responsive">
-        <div class="form-group">
-          <label for="name">Country Name </label>
-          <input type="text" class="form-control" id="name" [(ngModel)]="name" name="name" placeholder="ANY COUNTRY">
-        </div>
+<div class="flex flex--wrap">
+  <div class="u-1/1-desk u-1/1-lap u-1/1-palm">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" role="dialog" [ngStyle]="{'display': mdlAddRecord ? 'block' : 'none', 'opacity': 1}">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Add of Country and Capital</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="countryName">Country Name </label>
+              <input type="text" class="form-control" id="countryName" [(ngModel)]="countryName" name="countryName" placeholder="ANY COUNTRY"
+                (ngModelChange)="validateInput()">
+            </div>
 
-        <div class="form-group">
-          <label for="capital">Country Capital </label>
-          <input type="text" class="form-control" id="capital" [(ngModel)]="capital" name="capital" placeholder="ANY CAPITAL">
-        </div>
+            <div class="form-group">
+              <label for="capital">Country Capital </label>
+              <input type="text" class="form-control" id="capital" [(ngModel)]="capital" name="capital" placeholder="ANY CAPITAL" (ngModelChange)="validateInput()">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-success" align='left' (click)="addData()" [disabled]="disableSave">Save Data</button>
 
-        <button class="btn btn-success" (click)="addData()">Save Data</button>
-      </div>
-    </div>
-  </div>
-</div>
- -->
-
-<div id="mdlSample" class="modal fade fade-scale dialog" role="dialog" [ngStyle]="{'display': mdlSampleIsOpen ? 'block' : 'none', 'opacity': 1}">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Add of Country and Capital</h4>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label for="name">Country Name </label>
-          <input type="text" class="form-control" id="name" [(ngModel)]="name" name="name" placeholder="ANY COUNTRY">
+            <button type="button" id="btnClose" align='right' class="btn btn-danger" [disabled]="disableClose" (click)="closeModal()">Close</button>
+            <!-- <i class="fa fa-times fa-fw"></i> Cancel</button> -->
+          </div>
         </div>
-
-        <div class="form-group">
-          <label for="capital">Country Capital </label>
-          <input type="text" class="form-control" id="capital" [(ngModel)]="capital" name="capital" placeholder="ANY CAPITAL">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-success" align ='left' (click)="addData()">Save Data</button>
-         
-        <button type="button" id="btnClose" align ='right' class="btn btn-danger" (click)="closeModal()">Close</button>
-          <!-- <i class="fa fa-times fa-fw"></i> Cancel</button> -->
       </div>
     </div>
   </div>

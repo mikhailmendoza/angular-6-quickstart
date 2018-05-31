@@ -43,6 +43,12 @@
   .modal-header{
     background-color:rgb(164, 197, 235);
   }
+
+  .modal-danger{
+    background-color: #bd2130 !important;
+    border-color: #b21f2d
+  }
+
   .modal-content {
     overflow:hidden;
   }

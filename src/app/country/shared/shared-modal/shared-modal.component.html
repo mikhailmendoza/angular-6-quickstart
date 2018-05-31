@@ -1,0 +1,25 @@
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal" [ngStyle]="{'display': showModal ? 'block' : 'none', 'opacity': 1}">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        
+          <!-- Modal Header -->
+          <div class="modal-header" [ngClass]="{'modal-danger':mode === 'delete'}">
+            <h4 class="modal-title">{{modalTitle}}</h4>
+            <button type="button" class="close" (click)="closeConfirmatioModal()">&times;</button>
+          </div>
+          
+          <!-- Modal body -->
+          <div class="modal-body">
+            {{modalBody}}
+          </div>
+          
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button class="btn btn-success" align ='left' (click)="proceed()">Continue</button>
+            <button type="button" class="btn btn-secondary" (click)="closeConfirmatioModal()">Close</button>
+          </div>
+          
+        </div>
+      </div>
+    </div>

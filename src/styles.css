@@ -1,7 +1,88 @@
 /* You can add global styles to this file, and also import other style files */
+/* @import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"); */
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css");
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js");
+h2 {
+  color: #444;
+  font-weight: lighter;
+}
 
-h2 { color: #444; font-weight: lighter; }
-body { margin: 2em; }
-body, input[text], button { color: #888; font-family: Cambria, Georgia; }
-button { padding: 0.2em; font-size: 14px}
-* { font-family: Arial; }
+body {
+  margin: 2em;
+}
+
+body,
+input[text],
+button {
+  color: #888;
+  font-family: Cambria, Georgia;
+}
+
+button {
+  padding: 0.2em;
+  font-size: 14px
+}
+
+* {
+  font-family: Arial;
+}
+
+.hidden {
+  visibility: hidden
+}
+
+.list-group-item {
+  width: 100%;
+}
+
+.border-bottom {
+  border-bottom: 1px solid rgba(0, 0, 0, .125);
+}
+
+footer{
+  color: white;
+}
+footer a{
+  color: #bfffff;
+}
+footer a:hover{
+  color: white;
+}
+
+.footer-bottom{
+  background: #3d6277;
+  padding: 2em;
+}
+.footer-top{
+  background: #2d4958;  
+}
+.footer-middle{
+   background: #3d6277;
+  padding-top: 2em;
+  color: white;
+}
+/**Sub Navigation**/
+.subnavigation-container{
+  background: #3d6277;
+}
+.subnavigation .nav-link{
+  color: white;
+  font-weight: bold;
+}
+.subnavigation-container{
+  text-align: center;
+}
+.subnavigation-container .navbar{
+  display: inline-block;
+  margin-bottom: -6px; /* Inline-block margin offffset HACK -Gilron */
+}
+.col-subnav a{
+  padding: 1rem 1rem;
+  color: white;
+  font-weight: bold;
+}
+.col-subnav .active{
+  border-top:5px solid orange;
+ background: white;
+  color: black;
+}
