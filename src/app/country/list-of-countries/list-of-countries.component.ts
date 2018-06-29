@@ -54,7 +54,8 @@ export class ListOfCountriesComponent implements  OnChanges {
   }
 
   sortLogic(sortOrder, columnName) {
-    if (sortOrder === 'asc') {
+    // TESTING
+    if (sortOrder === 'desc') {
       this.countryList = _.sortBy(this.countryList, columnName);
     } else {
       this.countryList = _.sortBy(this.countryList, columnName).reverse();
