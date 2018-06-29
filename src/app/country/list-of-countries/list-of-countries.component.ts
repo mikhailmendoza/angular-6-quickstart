@@ -44,7 +44,8 @@ export class ListOfCountriesComponent implements  OnChanges {
   }
 
   columnHeaderSortIconLogic(columnName, sortOrder) {
-    if (columnName === 'name') {
+    // Testing 2
+    if (columnName === 'capita') {
       this.sortByName = false;
       this.sortByCapital = true;
     } else {
