@@ -15,24 +15,21 @@ export class HeroListComponent implements OnInit {
   error: any;
   showNgFor = false;
   isDataloading = true;
+  showSpinner = true;
 
   constructor(private router: Router, private heroService: HeroService) { }
 
   getHeroes(): void {
+    this.enableSpinner();
     this.heroService.getHeroes().subscribe((heroes: any) => {
       this.heroes = heroes;
-      this.isDataloading = false;
+      this.hideSpinner();
     },
       (err) => {
-        this.error = this.error;
-        error => (this.error = error)
+        this.error = err;
       },
-      () => {
-         
-      
-       
-      });
-
+      () => { }
+    );
   }
 
   addHero(): void {
@@ -40,7 +37,7 @@ export class HeroListComponent implements OnInit {
     this.selectedHero = null;
   }
 
-  saveRecord(hero){
+  saveRecord(hero) {
     this.addingHero = false;
   }
 
@@ -72,6 +69,18 @@ export class HeroListComponent implements OnInit {
 
   gotoDetail(): void {
     this.router.navigate(['/detail', this.selectedHero.id]);
+  }
+
+  enableSpinner() {
+    this.showSpinner = true;
+    this.isDataloading = true;
+  }
+
+  hideSpinner() {
+    setTimeout(() => {
+      this.showSpinner = false;
+      this.isDataloading = false;
+    }, 1000);
   }
 
 }

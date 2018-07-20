@@ -1,10 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import {
-  ReactiveFormsModule,
-  FormsModule,
-} from '@angular/forms';
 import { SharedUtils } from '../../shared/utils';
-import * as _ from "lodash";
+
 
 @Component({
   selector: 'my-country-edit',
@@ -17,7 +13,7 @@ export class CountryEditComponent implements OnChanges {
   @Input() selectedData: any;
   @Output() editRecord: EventEmitter<any> = new EventEmitter();
   @Output() exitModal: EventEmitter<any> = new EventEmitter();
-  disableSave: boolean = true;
+  disableSave: Boolean = true;
   countryName: string;
   capital: string;
 
@@ -32,13 +28,13 @@ export class CountryEditComponent implements OnChanges {
   }
 
   editData() {
-    let editCountry = { name: this.countryName, capital: this.capital };
+    const editCountry = { name: this.countryName, capital: this.capital };
     this.editRecord.emit(editCountry);
   }
 
   closeModal() {
     this.mdlEditRecord = false;
-    this.exitModal.emit("edit");
+    this.exitModal.emit('edit');
   }
 
   validateInput() {

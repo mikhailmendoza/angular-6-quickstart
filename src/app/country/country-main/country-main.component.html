@@ -2,15 +2,11 @@
 
   <!-- 25% on a large screen, 50% on a smaller screen, and 100% on mobile -->
   <div class="u-1/1-desk u-1/1-lap u-1/1-palm">
-  
-  </div>
-  <div class="u-1/1-desk u-1/1-lap u-1/1-palm">
-
-          <div class="u-1/1-desk u-1/1-lap u-1/1-palm text-align-center">
-          <span class="epsilon value">{{title}}</span>
-        </div>
-        <div class="u-1/4-desk u-1/4-lap u-1/4-palm"></div>
-        <my-country-search class="" [countryList]="countryList" [tempCountryList]="tempCountryList" (searchResult)="searchResult($event)"></my-country-search>
+    <div class="u-1/1-desk u-1/1-lap u-1/1-palm text-align-center">
+      <span class="epsilon value">{{title}}</span>
+    </div>
+    <div class="u-1/4-desk u-1/4-lap u-1/4-palm"></div>
+    <my-country-search class="" [countryList]="countryList" [tempCountryList]="tempCountryList" (searchResult)="searchResult($event)"></my-country-search>
     <my-list-of-countries [countryList]="countryList" [tempCountryList]="tempCountryList" (selectRecord)="selectRecord($event)"></my-list-of-countries>
   </div>
   <div class="u-1/1-desk u-1/1-lap u-1/1-palm">
@@ -37,29 +33,7 @@
       (exitSharedModal)="exitSharedModal($event)">
     </my-shared-modal>
   </div>
-  
+
 </div>
 
 <my-shared-spinner *ngIf="showSpinner" [showSpinner]="showSpinner"></my-shared-spinner>
-
-<div  class="flex flex--wrap">
-    <div class="u-1/1-desk u-1/1-lap u-1/1-palm" style="background-color:  #f8f9fa!important;">
-  tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
-    </div>
-
-</div>
-
-<!-- <div *ngIf="!isDataLoading">
-  <div class="layout">
-    <div class="layout__item u-1/1">
-      <my-country-search [countryList]="countryList" [tempCountryList]="tempCountryList" (searchResult)="searchResult($event)"></my-country-search>
-      <my-list-of-countries [countryList]="countryList" [tempCountryList]="tempCountryList" (selectRecord)="selectRecord($event)"></my-list-of-countries>
-      <div class="layout__item--center">
-        <button class="btn btn-success u-lap-and-up-mh" (click)="addCountryCapital()" [disabled]="addCountry">Add Data</button>
-        <button class="btn btn-success u-lap-and-up-mh" (click)="editCountryCapital()" [disabled]="editCountry">Edit Data</button>
-        <button class="btn btn-danger u-lap-and-up-mh" (click)="deleteRecord()" [disabled]="deleteCountry">Delete Data</button>
-      </div>
-
-    </div>
-  </div>
-</div> -->

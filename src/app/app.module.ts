@@ -7,7 +7,7 @@ import { HttpClientInMemoryWebApiModule, InMemoryDbService } from 'angular-in-me
 import { InMemoryDataService } from './in-memory-data.service';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { DashboardComponent } from './dashboard.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroSearchComponent } from './heroes/hero-search/hero-search.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './heroes/hero-detail/hero-detail.component';
@@ -38,7 +38,7 @@ import { SharedModalComponent } from './country/shared/shared-modal/shared-modal
       delay: 300,
       passThruUnknownUrl: true
     })
-    
+
   ],
   declarations: [
     AppComponent,
@@ -55,7 +55,7 @@ import { SharedModalComponent } from './country/shared/shared-modal/shared-modal
     SharedSpinnerComponent,
     CountryEditComponent,
     SharedModalComponent
-   ],
+  ],
 
   providers: [HeroService, CountryService, SharedUtils],
   bootstrap: [AppComponent]

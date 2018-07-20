@@ -1,10 +1,6 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, } from '@angular/core';
-import {
-  ReactiveFormsModule,
-  FormsModule,
-} from '@angular/forms';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+
 import { SharedUtils } from '../../shared/utils';
-import * as _ from "lodash";
 
 @Component({
   selector: 'my-country-add',
@@ -21,8 +17,8 @@ export class CountryAddComponent implements OnChanges {
   @Output() exitModal: EventEmitter<any> = new EventEmitter();
   countryName: string;
   capital: string;
-  disableSave: boolean = true;
-  disableClose: boolean = false;
+  disableSave: Boolean = true;
+  disableClose: Boolean = false;
 
   constructor(private sharedUtils: SharedUtils) { }
 
@@ -31,10 +27,8 @@ export class CountryAddComponent implements OnChanges {
     this.capital = '';
   }
 
-  ngOnInit() { }
-
   addData() {
-    let addCountry = { name: this.countryName, capital: this.capital };
+    const addCountry = { name: this.countryName, capital: this.capital };
     this.addRecord.emit(addCountry)
     this.disableBtns();
     this.closeModal();
@@ -42,7 +36,7 @@ export class CountryAddComponent implements OnChanges {
 
   closeModal() {
     this.mdlAddRecord = false;
-    this.exitModal.emit("add");
+    this.exitModal.emit('add');
     this.clearFields();
   }
 

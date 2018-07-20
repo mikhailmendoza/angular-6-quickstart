@@ -47,7 +47,6 @@ export class HeroDetailComponent implements OnInit {
     this.close.emit(savedHero);
     if (this.navigated) {
       window.history.back();
-    
     }
   }
 }

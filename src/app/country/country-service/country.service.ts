@@ -4,7 +4,7 @@ import { Observable, throwError as observableThrowError, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { CountryModel } from '../country-model/country';
 import { MockDataCountryList } from '../mock-data/country-list';
-import * as _ from "lodash";
+import * as _ from 'lodash';
 
 
 @Injectable({
@@ -34,7 +34,7 @@ export class CountryService {
   }
 
   updateCountries(countryList, originalValue, newValue): Observable<CountryModel[]> {
-    let updateObj = _.find(countryList, originalValue)
+    const updateObj = _.find(countryList, originalValue)
     if (updateObj) {
       updateObj.name = newValue.name;
       updateObj.capital = newValue.capital;

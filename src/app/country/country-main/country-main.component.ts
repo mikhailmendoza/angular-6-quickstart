@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { MockDataCountryList } from '../mock-data/country-list';
-import * as _ from "lodash";
+import * as _ from 'lodash';
 import { CountryModel } from '../country-model/country';
 import { CountryService } from '../country-service/country.service';
-import { filter } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 import { SharedUtils } from '../../shared/utils';
 
 @Component({
@@ -24,7 +20,7 @@ export class CountryMainComponent implements OnInit {
   countryModel: CountryModel = new CountryModel;
   mdlAddRecord = false;
   showSpinner = true;
-  title = "Country & Capital List";
+  title = 'Country & Capital List';
   selectedData: CountryModel;
   editCountry = true;
   deleteCountry = true;
@@ -93,7 +89,7 @@ export class CountryMainComponent implements OnInit {
     }, error => (this.error = error));
     this.tempCountryList = this.countryList;
     this.hideSpinner();
-    this.exitModal("edit");
+    this.exitModal('edit');
   }
 
   addCountryCapital() {
@@ -108,13 +104,13 @@ export class CountryMainComponent implements OnInit {
   proceedTransaction() {
     this.enableSpinner()
     switch (this.mode) {
-      case "delete":
+      case 'delete':
         this.deleteCountries();
         break;
-      case "add":
+      case 'add':
         this.saveRecord();
         break;
-      case "edit":
+      case 'edit':
         this.updateCountry();
         break;
 
@@ -171,11 +167,11 @@ export class CountryMainComponent implements OnInit {
 
   exitModal(mode) {
     switch (mode) {
-      case "add":
+      case 'add':
         this.mdlAddRecord = false;
         this.addCountry = false;
         break;
-      case "edit":
+      case 'edit':
         this.mdlEditRecord = false;
         this.editCountry = false;
         break;
@@ -192,7 +188,7 @@ export class CountryMainComponent implements OnInit {
 
   selectRecord(countryModel: CountryModel) {
     this.selectedData = countryModel;
-    let flag = (this.selectedData) ? false : true;
+    const flag = (this.selectedData) ? false : true;
     this.enableDisableEditDeleteBtn(flag)
   }
 

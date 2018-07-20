@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subject, of } from 'rxjs';
-import {
-  catchError,
-  debounceTime,
-  distinctUntilChanged,
-  switchMap
-} from 'rxjs/operators';
+import { catchError, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Hero } from '../hero-model/hero';
 import { HeroSearchService } from '../hero-service/hero-search.service';
 
@@ -23,7 +18,7 @@ export class HeroSearchComponent implements OnInit {
   constructor(
     private heroSearchService: HeroSearchService,
     private router: Router
-  ) {}
+  ) { }
 
   search(term: string): void {
     // Push a search term into the observable stream.
@@ -38,9 +33,9 @@ export class HeroSearchComponent implements OnInit {
         term =>
           term // switch to new observable each time
             ? // return the http search observable
-              this.heroSearchService.search(term)
+            this.heroSearchService.search(term)
             : // or the observable of empty heroes if no search term
-              of<Hero[]>([])
+            of<Hero[]>([])
       ),
       catchError(error => {
         // TODO: real error handling

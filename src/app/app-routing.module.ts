@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { DashboardComponent } from './dashboard.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroDetailComponent } from './heroes/hero-detail/hero-detail.component';
-import { HeroesComponent } from './heroes/heroes.component';
-import { ListOfCountriesComponent } from './country/list-of-countries/list-of-countries.component';
 import { HeroListComponent } from './heroes/hero-list/hero-list.component';
-import {CountryMainComponent} from './country/country-main/country-main.component';
+import { CountryMainComponent } from './country/country-main/country-main.component';
 
 
 const routes: Routes = [

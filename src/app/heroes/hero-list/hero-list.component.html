@@ -1,13 +1,6 @@
-<h2>My Heroes</h2>
-
-<!-- <div *ngIf="selectedHero">
-  <h2>
-    {{selectedHero.name | uppercase}} is my hero
-  </h2>
-  <button (click)="gotoDetail()">View Details</button>
-</div> -->
-
-<div *ngIf="!isDataloading">
+<my-shared-spinner *ngIf="showSpinner" [showSpinner]="showSpinner"></my-shared-spinner>
+<div *ngIf="!showSpinner">
+  <h2>My Heroes</h2>
   <div class="row row justify-content-left" colspan="6">
     <div class="col col-md-3 col-md-3 u-lap-and-up-m">
       <div class="card mb-3 card mb-3 scroll-body">
@@ -27,8 +20,8 @@
         <my-hero-detail [addingHero]="addingHero" (saveRecord)="saveRecord($event)" (close)="close($event)"></my-hero-detail>
       </div>
     </div>
-    <div class="col col-md-3 col-md-3 u-lap-and-up-m" colspan="6">
-      <h4>ngFor Features</h4>
+    <h4>ngFor Features</h4>
+    <div class="col col-md-3 col-md-3 u-lap-and-up-m card mb-3 card mb-3 scroll-body" colspan="6">
       <table class="table table-bordered">
         <thead>
           <tr>

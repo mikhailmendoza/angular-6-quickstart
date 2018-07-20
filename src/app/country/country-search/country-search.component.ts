@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { CountryModel } from '../country-model/country';
 import { SharedUtils } from '../../shared/utils';
-import * as _ from "lodash";
+import * as _ from 'lodash';
 
 @Component({
   selector: 'my-country-search',
@@ -18,7 +18,7 @@ export class CountrySearchComponent implements OnInit, OnChanges {
   @Input() tempCountryList: any;
   @Output() searchResult = new EventEmitter();
   search: String;
-  filterBy: string = 'country';
+  filterBy: String = 'country';
   filterObj: any;
   constructor(private sharedUtils: SharedUtils) { }
 

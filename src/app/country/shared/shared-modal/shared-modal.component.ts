@@ -9,7 +9,7 @@ export class SharedModalComponent implements OnInit {
   @Input() modalTitle: string;
   @Input() modalBody: string;
   @Input() mode: string;
-  @Input () showModal: boolean;
+  @Input() showModal: boolean;
   @Output() exitSharedModal: EventEmitter<any> = new EventEmitter();
   @Output() proceedTransaction: EventEmitter<any> = new EventEmitter();
   constructor() { }
@@ -17,11 +17,11 @@ export class SharedModalComponent implements OnInit {
   ngOnInit() {
   }
 
-  proceed(){
+  proceed() {
     this.proceedTransaction.emit(true);
   }
 
-  closeConfirmatioModal(){
+  closeConfirmatioModal() {
     this.exitSharedModal.emit(true);
   }
 }
